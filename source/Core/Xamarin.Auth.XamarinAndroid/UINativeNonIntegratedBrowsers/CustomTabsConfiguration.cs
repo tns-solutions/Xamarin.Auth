@@ -461,12 +461,16 @@ namespace Xamarin.Auth
                             actionSourceId
                         );
 
+            // In order to work the authentication using the custom tabs, the IMMUTABLE flag is mandatory for Android 12 (API 31-32).
+            // See https://developer.android.com/about/versions/12/behavior-changes-12 for more details.
+            // The IMMUTABLE flag was introduced from the M version (API 23)
+            PendingIntentFlags flags = Build.VERSION.SdkInt >= BuildVersionCodes.M ? PendingIntentFlags.Immutable : 0;
             PendingIntent broadcast = PendingIntent.GetBroadcast
                                                     (
                                                        activity.ApplicationContext,
                                                        actionSourceId,
                                                        actionIntent,
-                                                       0
+                                                       flags
                                                     );
             return broadcast;
         }
