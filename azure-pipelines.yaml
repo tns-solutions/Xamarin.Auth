@@ -85,7 +85,8 @@ jobs:
   - job: build_windows_vs2017_quick_and_dirty
     displayName: Build on Windows VS2017 Redth's Quick and Dirty
     pool:
-      vmImage: vs2017-win2016
+      vmImage: windows-latest
+      #vmImage: vs2017-win2016
     steps:
       - task: NuGetCommand@2
         displayName: 'NuGet restore'
