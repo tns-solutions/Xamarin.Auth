@@ -11,6 +11,7 @@ variables:
 jobs:
 
   - job: build_windows_vs2019
+    condition: false
     displayName: Build on Windows VS2019
     pool:
       vmImage: windows-2019
@@ -38,7 +39,7 @@ jobs:
       - script: choco install dotnetcore-sdk --pre
       - script: choco install dotnetcore-sdk
       # - script: vs_buildtools.exe --add Microsoft.VisualStudio.Component.NuGet --quiet
-      # - script: vs_enterprise.exe --add Microsoft.VisualStudio.Component.PortableLibrary 
+      - script: vs_enterprise.exe --add Microsoft.VisualStudio.Component.PortableLibrary 
       - task: UseDotNet@2
         displayName: 'Use .NET Core SDK'
         inputs:
@@ -121,6 +122,7 @@ jobs:
 
 
   - job: build_windows_vs2017
+    condition: false
     displayName: Build on Windows VS2017
     pool:
       vmImage: vs2017-win2016
@@ -131,6 +133,7 @@ jobs:
         displayName: Run Cake Build
 
   - job: build_macos
+    condition: false
     displayName: Build on macOS VS4Mac
     pool:
       vmImage: macos-10.13
