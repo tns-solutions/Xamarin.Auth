@@ -85,16 +85,13 @@ jobs:
   - job: build_windows_vs2017_quick_and_dirty
     displayName: Build on Windows VS2017 Redth's Quick and Dirty
     pool:
-      vmImage: windows-latest
+      vmImage: windows-2019
       #vmImage: vs2017-win2016
     steps:
       - checkout: self
         submodules: recursive
       - task: NuGetToolInstaller@0
         displayName: 'Install NuGet'
-      - task: DotNetCoreInstaller@0
-        inputs:
-          version: '3.0.100-preview4-010963'
       - task: DotNetCoreInstaller@0
         displayName: 'Install .NET Core sdk 3.0'
         inputs:
